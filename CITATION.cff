@@ -1,0 +1,17 @@
+cff-version: 1.2.0
+message: "If you use this code or data, please cite it as below."
+title: "VQE electronic-structure simulation of MoS2 quantum dots: pilot pipeline (NanoAfrica 2026)"
+authors:
+  - family-names: Moyo
+    given-names: Cyprian B.
+    affiliation: "Department of Chemistry, Nelson Mandela University"
+    email: cyprian.moyo@nithecs.ac.za
+  - family-names: Ogunlaja
+    given-names: A.
+    affiliation: "Department of Chemistry, Nelson Mandela University"
+  - family-names: Tshentu
+    given-names: Z. R.
+    affiliation: "Department of Chemistry, Nelson Mandela University"
+date-released: 2026-10-21
+license: MIT
+keywords: [VQE, quantum computing, MoS2, quantum dots, CASCI, ADAPT-VQE, error mitigation, ZNE, IBM Heron]

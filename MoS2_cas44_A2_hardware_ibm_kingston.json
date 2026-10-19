@@ -1,0 +1,19 @@
+{
+ "backend": "ibm_kingston",
+ "retrieved_utc": "2026-10-19T15:13:28.486943",
+ "jobs": {
+  "raw": "dbb374oc77vs7383l7tg",
+  "mitigated": "dbb3758c77vs7383l7v0",
+  "backend": "ibm_kingston",
+  "circuits": [
+   "VQE"
+  ]
+ },
+ "E_CASCI": -862.3085920067284,
+ "raw": {
+  "status": "CANCELLED"
+ },
+ "mitigated": {
+  "status": "CANCELLED"
+ }
+}

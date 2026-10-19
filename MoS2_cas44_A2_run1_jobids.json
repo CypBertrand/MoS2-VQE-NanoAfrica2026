@@ -1,0 +1,8 @@
+{
+ "raw": "dbb2shs24mrc73867ne0",
+ "mitigated": "dbb2si7i0auc7392rgb0",
+ "backend": "ibm_kingston",
+ "circuits": [
+  "VQE"
+ ]
+}

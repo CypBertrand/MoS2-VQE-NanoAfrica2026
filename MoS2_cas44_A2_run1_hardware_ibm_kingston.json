@@ -1,0 +1,29 @@
+{
+ "backend": "ibm_kingston",
+ "retrieved_utc": "2026-10-19T14:50:51.887474",
+ "jobs": {
+  "raw": "dbb2shs24mrc73867ne0",
+  "mitigated": "dbb2si7i0auc7392rgb0",
+  "backend": "ibm_kingston",
+  "circuits": [
+   "VQE"
+  ]
+ },
+ "E_CASCI": -862.3085920067284,
+ "raw": {
+  "quantum_seconds": null,
+  "VQE": {
+   "E": -862.1855052142731,
+   "std_mHa": 7.337190579370317,
+   "err_mHa": 123.08679245529675
+  }
+ },
+ "mitigated": {
+  "quantum_seconds": null,
+  "VQE": {
+   "E": -862.2827484171765,
+   "std_mHa": 14.3608739563331,
+   "err_mHa": 25.843589551868718
+  }
+ }
+}
