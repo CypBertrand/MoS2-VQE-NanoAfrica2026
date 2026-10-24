@@ -3,11 +3,10 @@
 NanoAfrica 2026 poster: *Variational Quantum Eigensolver Approach to Electronic Structure Simulation of MoS₂ Quantum Dots*
 C.B. Moyo, A. Ogunlaja, Z.R. Tshentu (Nelson Mandela University) · NMU Quantum Computing Society pilot project
 
-Every number on the poster draft was produced by these scripts. Re-run them yourself (ideally on the CHPC cluster) before the conference. Then replace the device-calibrated *simulation* numbers with your real *hardware* numbers from step 6.
-
+Every number on the poster draft was produced by these scripts. 
 ---
 
-## 1. Methodology (24-hour compute budget)
+## 1. Methodology 
 
 **Model systems.** Two stoichiometric (MoS₂)ₙ clusters, n = 1 (MoS₂) and n = 3 (Mo₃S₆), in a trigonal-prismatic Mo₃ motif cut from the 2H monolayer. Both were optimised at PBE/def2-SVP with the def2 effective core potential on Mo, density fitting and second-order SCF (PySCF + PyBerny). These are the smallest units of a (MoS₂)ₙ size series. Larger, H-passivated dots are listed under future work.
 
@@ -73,26 +72,6 @@ The Hartree–Fock circuit (X gates only) is measured alongside as a calibration
 | `04_hardware.py` | real IBM Quantum run (EstimatorV2, Batch) |
 | `05_figures.py` | all poster figures |
 
----
+# 3. Pilot results produced with this pipeline (cloud run, 19 Oct 2026, 2 CPU cores)
 
-## 3. Abstract fixes before submission or printing
-1. Replace "executed on IBM Quantum superconducting processors (127-qubit ibm_brisbane)" with the backend you actually used. ibm_brisbane is retired.
-2. State the active space: "...within chemically selected (4e,4o) active spaces of (MoS₂)ₙ clusters".
-3. Add one number, e.g. "TREX + ZNE reduced the error from 23.6 to 0.6 ± 0.7 mHa, within chemical accuracy."
-4. Optical/SPE claims: this pipeline gives ground states only. Keep those sentences as outlook, not as results.
 
----
-
-## 4. Pilot results produced with this pipeline (cloud run, 19 Oct 2026, 2 CPU cores)
-
-| | MoS₂ | Mo₃S₆ |
-|---|---|---|
-| CAS(4e,4o) natural occupations | 1.98 / 1.89 / 0.11 / 0.02 | 1.65 / 1.44 / 0.56 / 0.35 |
-| HOMO–LUMO gap PBE → PBE0 (eV) | 0.11 → 2.26 | 0.58 → 1.87 |
-| HF error vs CASCI (mHa) | 34.8 | 123.7 |
-| UCCSD error (mHa) / 2q gates (Heron) | 0.04 / 540 | 1.71 / 621 |
-| ADAPT-2 compact error (mHa) / 2q gates | 0.70 / 6 | 40.8 / 6 |
-| Heron noise: raw → TREX → ZNE (mHa) | 23.6 → 7.4 → 0.6 ± 0.7 | 56.9 → 44.4 → 41.6 ± 2.7 |
-| Eagle noise: raw → TREX → ZNE (mHa) | 112.6 → 14.1 → −1.5 ± 2.5 | – |
-
-All JSON outputs sit next to the scripts (so `05_figures.py` runs directly) and figures are in `fig/`. These are **device-calibrated simulations**, not QPU runs. Run `04_hardware.py` for the real-device numbers.
