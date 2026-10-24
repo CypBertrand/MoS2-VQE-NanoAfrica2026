@@ -1,4 +1,4 @@
-# MoS₂ quantum-dot VQE: 24-hour pilot pipeline
+# MoS₂ quantum-dot VQE
 
 NanoAfrica 2026 poster: *Variational Quantum Eigensolver Approach to Electronic Structure Simulation of MoS₂ Quantum Dots*
 C.B. Moyo, A. Ogunlaja, Z.R. Tshentu (Nelson Mandela University) · NMU Quantum Computing Society pilot project
