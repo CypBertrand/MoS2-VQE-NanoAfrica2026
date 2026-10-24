@@ -35,30 +35,10 @@ Strong correlation is quantified by natural-orbital occupations and the Mo-4d ch
 The Hartree–Fock circuit (X gates only) is measured alongside as a calibration control.
 
 **Hardware.** `04_hardware.py` submits the same two circuits through Qiskit Runtime `EstimatorV2` in a `Batch`. Settings: TREX, ZNE (1, 3, 5), gate and measurement twirling, XY4 dynamical decoupling, plus an unmitigated (resilience 0) run for comparison.
-> ⚠ **ibm_brisbane was retired on 3 Nov 2025.** By default the script uses the least-busy Heron backend you can access. Update the abstract and poster to name the device you actually ran on, with the job IDs and calibration date.
 
 **Figure of merit.** Error relative to CASCI in the same active space. The target is chemical accuracy (1.6 mHa).
 
----
-
 ## 2. Step-by-step: from zero to finished poster
-
-| # | When | Step | Command / action | Output |
-|---|---|---|---|---|
-| 0 | h 0 | Environment | `pip install pyscf pyberny pennylane qiskit qiskit-aer qiskit-ibm-runtime matplotlib` | |
-| 1 | h 0–1 | IBM account | Log in at quantum.cloud.ibm.com, copy API key + instance CRN, then `QiskitRuntimeService.save_account(channel="ibm_quantum_platform", token=..., instance=...)`. Check your QPU minutes (the Open Plan gives ~10 min / 28 days, which is enough for this design). | |
-| 2 | h 1–6 | Classical stage, MoS₂ | `python 01_classical.py MoS2` (≈3 min on 2 cores) | `MoS2_opt.xyz`, `MoS2_classical.json`, CASSCF orbitals |
-| 3 | h 1–10 | Classical stage, Mo₃S₆ | `python 01_classical.py Mo3S6` (geometry ≈75 min on 2 cores; much faster on CHPC). CASSCF(6e,6o) did not converge within 1 h here, so after the (4e,4o) step you can stop it and run `python 01b_finish.py Mo3S6` | same for Mo₃S₆ |
-| 4 | h 6–12 | Hamiltonian + noiseless VQE | `python 02_vqe_sim.py MoS2 4 4` then `python 02b_adapt.py MoS2 4 4 6`; repeat for `6 6` and for Mo3S6. **Check `E_exactdiag == E_CASCI`.** | `*_vqe.json`, `*_adapt.json`, `*_H.json` |
-| 5 | h 12–16 | Noisy simulation + ZNE | `python 03_noisy_zne.py MoS2 4 4 A2 8192 5 FakeMarrakesh` (and `FakeBrisbane`, `A1`, Mo3S6) | `*_noisy.json` |
-| 6 | h 12–20 | **Real hardware** (submit early; queues vary) | `python 04_hardware.py MoS2 4 4 A2` then Mo3S6. Record job IDs and backend calibration date. | `*_hardware_<backend>.json` |
-| 7 | h 20–22 | Figures | `python 05_figures.py` | `fig/*.png` (300 dpi) |
-| 8 | h 22–24 | Poster | Replace figures and numbers on the poster; fix the abstract (backend name, one quantitative result). Export PDF at A0 and proof-print at A3. | final PDF |
-
-### Go/no-go checks
-- **After step 4:** exact diagonalisation must reproduce CASCI. If not, the integral convention is wrong. Stop and fix before going further.
-- **After step 5:** the HF control circuit, once mitigated, should land on its ideal error (≈ +35 mHa for MoS₂). If it doesn't, readout calibration is off.
-- **After step 6:** if a hardware job fails or the queue exceeds the time budget, report the device-calibrated simulation and label it clearly as such on the poster.
 
 ### Files
 | File | Purpose |
@@ -71,7 +51,3 @@ The Hartree–Fock circuit (X gates only) is measured alongside as a calibration
 | `03_noisy_zne.py` | device-noise sampling, TREX, ZNE, error bars |
 | `04_hardware.py` | real IBM Quantum run (EstimatorV2, Batch) |
 | `05_figures.py` | all poster figures |
-
-# 3. Pilot results produced with this pipeline (cloud run, 19 Oct 2026, 2 CPU cores)
-
-
